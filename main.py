@@ -32,6 +32,10 @@ def main():
         os.makedirs(parent, exist_ok=True)
     with open(target, "w", encoding="utf-8") as handle:
         handle.write(FORECAST)
+    with open(target, "r", encoding="utf-8") as handle:
+        written = handle.read()
+    if written != FORECAST:
+        raise SystemExit("entry.txt round-trip check failed: written text differs from forecast")
 
 
 if __name__ == "__main__":
